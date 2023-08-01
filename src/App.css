@@ -50,3 +50,16 @@
   color: white !important; 
 }
 
+@media (min-width: 601px) {
+  .cartIcon {
+    display: none;
+  }
+}
+
+/* Show the cart icon on screens up to 600px (adjust the value as needed) */
+@media (max-width: 600px) {
+  .myCartText {
+    display: none;
+  }
+}
+

@@ -7,6 +7,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Popover from '@mui/material/Popover';
 import Cart from './Cart'; 
 import '../App.css';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 export default function ProductDetails() {
   const [productData, setProductData] = useState(null);
@@ -90,7 +91,7 @@ export default function ProductDetails() {
 
   return (
     <div>
-      <AppBar position="static" color="default" style={{ width: '100%', marginTop: '20px' }}>
+      <AppBar position="static" color="default" style={{ width: '100%', marginTop: '20px'}}>
         <Toolbar>
           <div style={{ flexGrow: 1 }} /> 
           <Button color="inherit" onClick={handleCartClick}>
@@ -99,27 +100,27 @@ export default function ProductDetails() {
         </Toolbar>
       </AppBar>
   
-      <Grid container>
-        <Grid item xs>
+      <Grid container direction="row" alignItems="flex-start" spacing={2}>
+        <Grid item xs={12} sm={6}>
           <img src={productData.imageURL} alt={productData.title} style={{ width: '100%' }} />
         </Grid>
-        <Grid item xs>
+        <Grid item xs={12} sm={6}>
           <div>
-            <h2>{productData.title}</h2>
-            <p>${productData.price}</p>
-            <p style={{ color: 'grey' }}>{productData.description}</p>
-            <p style={{ color: 'grey' }}>SIZE</p>
-            {sizeError && <p style={{ color: 'red' }}>Please select a size before adding to cart.</p>}
+            <header style={{ color: '#222222' }}><b>{productData.title}</b></header>
+            <p><b>${productData.price}</b></p>
+            <p style={{ color: '#888888' }}>{productData.description}</p>
+            <p style={{ color: '#888888' }}>SIZE<span style={{ color: '#C90000' }}>*</span>{selectedSize && `(${selectedSize})`}</p>
+            {sizeError && <p style={{ color: '#C90000' }}>Please select a size before adding to cart.</p>}
             {productData.sizeOptions.map((sizeOption) => (
               <Button
                 key={sizeOption.id}
                 variant="outlined"
                 style={{
-                  width: '30px',
-                  height: '30px',
+                  width: '50px',
+                  height: '50px',
                   margin: '5px',
-                  color: 'grey',
-                  borderColor: sizeOption.label === selectedSize ? 'black' : 'grey',
+                  color: '#222222',
+                  borderColor: sizeOption.label === selectedSize ? '#222222' : '#CCCCCC',
                   borderWidth: sizeOption.label === selectedSize ? '3px' : '1px',
                 }}
                 onClick={() => handleSizeSelect(sizeOption.label)}
@@ -148,7 +149,10 @@ export default function ProductDetails() {
           horizontal: 'right',
         }}
       >
+        <div style={{ padding: '16px' }}>
         <Cart cartItems={cartItems} />
+        </div>
+        
       </Popover>
     </div>
   );
