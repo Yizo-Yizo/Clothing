@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+.addToCartButton {
+  margin: 5px !important;
+  border-color: black !important; 
+  border-width: 3px !important;
+  color: black !important;
+  transition: background-color 0.2s !important; 
+}
+
+.addToCartButton:hover {
+  background-color: black !important; 
+  color: white !important; 
+}
+
